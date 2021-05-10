@@ -115,7 +115,7 @@ class SequenceCodeExecutor:
             rospy.wait_for_service('/niryo_one/commander/stop_command', 1)
             stop_cmd = rospy.ServiceProxy('/niryo_one/commander/stop_command', SetBool)
             stop_cmd()
-        except (rospy.ServiceException, rospy.ROSException), e:
+        except (rospy.ServiceException, rospy.ROSException) as e:
             pass
 
     def is_executing_code(self):

@@ -188,7 +188,7 @@ class JointMode:
                 reset(0)
             else:
                 reset(1)
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             rospy.logwarn("Could not set learning mode")
 
     def execute_tool_action(self, activate):
@@ -334,7 +334,7 @@ class JoystickInterface:
             is_active = rospy.ServiceProxy('/niryo_one/commander/is_active', GetInt)
             response = is_active()
             return response.value == 0
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             return False
 
     def enable_joy(self):

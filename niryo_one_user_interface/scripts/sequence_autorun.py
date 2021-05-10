@@ -90,7 +90,7 @@ class SequenceAutorun:
             rospy.wait_for_service('/niryo_one/calibrate_motors', 0.1)
             start_calibration = rospy.ServiceProxy('/niryo_one/calibrate_motors', SetInt)
             start_calibration(1)  # 1 : calibration auto
-        except (rospy.ServiceException, rospy.ROSException), e:
+        except (rospy.ServiceException, rospy.ROSException) as e:
             return False
         rospy.sleep(1)
         return True
@@ -101,7 +101,7 @@ class SequenceAutorun:
             rospy.wait_for_service('/niryo_one/activate_learning_mode', 0.1)
             activate_learning_mode = rospy.ServiceProxy('/niryo_one/activate_learning_mode', SetInt)
             activate_learning_mode(int(activate))
-        except (rospy.ServiceException, rospy.ROSException), e:
+        except (rospy.ServiceException, rospy.ROSException) as e:
             return False
         rospy.sleep(1)
         return True
@@ -257,7 +257,7 @@ class SequenceAutorun:
                 test_motor_thread.start()
 
                 return self.create_response(200, "Sequence motor test sent")
-            except (rospy.ServiceException, rospy.ROSException), e:
+            except (rospy.ServiceException, rospy.ROSException) as e:
                 return self.create_response(400, 'Sequence Autorun is not enabled, and /niryo_one/test_motors not up')
         self.activated = not self.activated
         if self.activated:

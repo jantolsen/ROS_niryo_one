@@ -86,7 +86,7 @@ class ToolController:
             for cmd in tool['available_commands']:
                 try:
                     cmds.append(tool_command_list[cmd])
-                except Exception, e:
+                except Exception as e:
                     rospy.logwarn(str(cmd) + " is not a recognized command")
                     continue
 
@@ -126,7 +126,7 @@ class ToolController:
         # 3.1 Validate params
         try:
             self.current_tool.validate_command(cmd)
-        except ToolValidationException, e:
+        except ToolValidationException as e:
             self.server.set_aborted(self.create_action_result(400, str(e)))
             return
 

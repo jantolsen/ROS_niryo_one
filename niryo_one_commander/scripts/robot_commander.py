@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # robot_commander.py
 # Copyright (C) 2017 Niryo
@@ -155,7 +155,7 @@ class RobotCommander:
             srv = rospy.ServiceProxy('/niryo_one/activate_learning_mode', SetInt)
             resp = srv(int(activate))
             return resp.status == 200
-        except (rospy.ServiceException, rospy.ROSException), e:
+        except (rospy.ServiceException, rospy.ROSException) as e:
             return False
 
     def publish_arm_max_velocity_scaling_factor(self, event):

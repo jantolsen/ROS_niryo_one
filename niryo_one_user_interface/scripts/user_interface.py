@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # user_interface.py
 # Copyright (C) 2017 Niryo

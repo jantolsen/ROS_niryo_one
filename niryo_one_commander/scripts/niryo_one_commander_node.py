@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # niryo_one_commander_node.py
 # Copyright (C) 2018 Niryo

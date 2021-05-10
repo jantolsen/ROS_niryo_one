@@ -58,14 +58,14 @@ class ToolRosCommandInterface:
                 tool_name = "No Dxl Tool"
             resp = self.service_ping_dxl_tool(tool_id, tool_name)
             return resp.state
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             return ROS_COMMUNICATION_PROBLEM
 
     def open_gripper(self, gripper_id, open_position, open_speed, open_hold_torque):
         try:
             resp = self.service_open_gripper(gripper_id, open_position, open_speed, open_hold_torque)
             return resp.state
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             return ROS_COMMUNICATION_PROBLEM
 
     def close_gripper(self, gripper_id, close_position, close_speed, close_hold_torque, close_max_torque):
@@ -73,21 +73,21 @@ class ToolRosCommandInterface:
             resp = self.service_close_gripper(gripper_id, close_position, close_speed, close_hold_torque,
                                               close_max_torque)
             return resp.state
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             return ROS_COMMUNICATION_PROBLEM
 
     def pull_air_vacuum_pump(self, vp_id, vp_pull_air_position, vp_pull_air_hold_torque):
         try:
             resp = self.service_pull_air_vacuum_pump(vp_id, vp_pull_air_position, vp_pull_air_hold_torque)
             return resp.state
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             return ROS_COMMUNICATION_PROBLEM
 
     def push_air_vacuum_pump(self, vp_id, vp_push_air_position):
         try:
             resp = self.service_push_air_vacuum_pump(vp_id, vp_push_air_position)
             return resp.state
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             return ROS_COMMUNICATION_PROBLEM
 
     def digital_output_tool_setup(self, gpio_pin):
@@ -98,7 +98,7 @@ class ToolRosCommandInterface:
         try:
             resp = self.service_setup_digital_output_tool(gpio_pin, 0)  # set output
             return resp.status, resp.message
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             return 400, "Digital IO panel service failed"
 
     def digital_output_tool_activate(self, gpio_pin, activate):
@@ -109,5 +109,5 @@ class ToolRosCommandInterface:
         try:
             resp = self.service_activate_digital_output_tool(gpio_pin, activate)
             return resp.status, resp.message
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             return 400, "Digital IO panel service failed"

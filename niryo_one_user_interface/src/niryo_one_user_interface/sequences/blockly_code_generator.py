@@ -35,7 +35,7 @@ def cleanup_node_tcp_port(port_number):
                 lines = line.split()
                 if len(lines) > 2:
                     subprocess.call(['kill', '-9', str(lines[1])])
-    except subprocess.CalledProcessError, e:
+    except subprocess.CalledProcessError as e:
         pass  # No process found
 
 
@@ -91,27 +91,27 @@ class BlocklyCodeGenerator:
         try:
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.socket.settimeout(6)
-        except socket.error, msg:
+        except socket.error as msg:
             return {'status': 400, 'message': msg}
 
         # 3. Connect to nodejs server
         try:
             self.socket.connect((HOST, self.tcp_port))
-        except socket.error, msg:
+        except socket.error as msg:
             self.socket.close()
             return {'status': 400, 'message': msg}
 
         # 4. Send filename to nodejs server
         try:
             self.socket.sendall(self.blockly_dir)
-        except socket.error, msg:
+        except socket.error as msg:
             self.socket.close()
             return {'status': 400, 'message': msg}
 
         # 5. Wait for response
         try:
             reply = self.socket.recv(1024)
-        except socket.timeout, msg:
+        except socket.timeout as msg:
             self.socket.close()
             return {'status': 400, 'message': 'Could not generate Python code in time'}
 
@@ -121,7 +121,7 @@ class BlocklyCodeGenerator:
         # 7. Analyze response	
         try:
             reply = ast.literal_eval(reply)
-        except Exception, e:
+        except Exception as e:
             return {'status': 400, 'message': e}
 
         if reply['status'] != 200:

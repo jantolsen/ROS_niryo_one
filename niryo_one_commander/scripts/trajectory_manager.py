@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # trajectory_manager.py 
 # Copyright (C) 2018 Niryo

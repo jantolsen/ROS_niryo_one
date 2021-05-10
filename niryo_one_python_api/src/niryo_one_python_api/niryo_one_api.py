@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # niryo_one_api.py
 # Copyright (C) 2017 Niryo
@@ -218,7 +218,7 @@ class NiryoOne:
             # Connect to service
             try:
                 rospy.wait_for_service(service_name, self.service_timeout)
-            except rospy.ROSException, e:
+            except rospy.ROSException as e:
                 raise NiryoOneException(e)
 
             # Call service
@@ -226,7 +226,7 @@ class NiryoOne:
                 service = rospy.ServiceProxy(service_name, service_msg_type)
                 response = service(*args)
                 return response
-            except rospy.ServiceException, e:
+            except rospy.ServiceException as e:
                 raise NiryoOneException(e)
 
         #

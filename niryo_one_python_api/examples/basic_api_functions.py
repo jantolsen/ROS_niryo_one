@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # To use the API, copy these 4 lines on each Python file you create
 from niryo_one_python_api.niryo_one_api import *
@@ -8,7 +8,7 @@ import math
 
 rospy.init_node('niryo_one_example_python_api')
 
-print "--- Start"
+print ("--- Start")
 
 n = NiryoOne()
 
@@ -16,14 +16,14 @@ try:
     # Calibrate robot first
     n.calibrate_auto()
     #n.calibrate_manual()
-    print "Calibration finished !\n"
+    print ("Calibration finished !\n")
 
     time.sleep(1)
 
     # Test learning mode
     n.activate_learning_mode(False)
-    print "Learning mode activated? "
-    print n.get_learning_mode()
+    print ("Learning mode activated? ")
+    print (n.get_learning_mode())
 
     # Move
     n.set_arm_max_velocity(30)
@@ -40,15 +40,15 @@ try:
 
     #Robot positions
     saved_positions = n.get_saved_position_list()
-    print "\nSaved positions: "
-    print saved_positions
+    print ("\nSaved positions: ")
+    print (saved_positions)
 
     current_joints_array = n.get_joints()
-    print "\nCurrent joints: "
-    print current_joints_array
+    print ("\nCurrent joints: ")
+    print (current_joints_array)
     current_position = n.get_arm_pose()
-    print "\nCurrent pose: "
-    print current_position
+    print ("\nCurrent pose: ")
+    print (current_position)
 
 
     # I/O
@@ -62,18 +62,18 @@ try:
 
     pin = GPIO_1A
     n.pin_mode(pin, PIN_MODE_INPUT)
-    print "\nRead pin GPIO 1_A 1: " + str(n.digital_read(pin))
+    print ("\nRead pin GPIO 1_A 1: " + str(n.digital_read(pin)))
 
-    print "\nCurrent IO states: "
-    print n.get_digital_io_state()
+    print ("\nCurrent IO states: ")
+    print (n.get_digital_io_state())
 
 
     #End effector
 
     # Test gripper
     n.change_tool(TOOL_GRIPPER_2_ID)
-    print "\nCurrent tool id:"
-    print n.get_current_tool_id()
+    print ("\nCurrent tool id:")
+    print (n.get_current_tool_id())
     n.close_gripper(TOOL_GRIPPER_2_ID,500)
     n.wait(0.2)
     n.open_gripper(TOOL_GRIPPER_2_ID,500)
@@ -95,15 +95,15 @@ try:
     n.change_tool(TOOL_NONE) # Unmount
 
     # Others
-    print "\nHardware status: "
-    print n.get_hardware_status()
+    print ("\nHardware status: ")
+    print (n.get_hardware_status())
 
     n.activate_learning_mode(True)
 
 
 except NiryoOneException as e:
-    print e
+    print (e)
     # handle exception here
     # you can also make a try/except for each command separately
 
-print "--- End"
+print ("--- End")

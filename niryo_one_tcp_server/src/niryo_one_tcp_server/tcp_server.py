@@ -20,9 +20,9 @@
 import socket
 import select
 import rospy
-import Queue
+import queue
 from threading import Thread, Lock
-from command_interpreter import CommandInterpreter
+from .command_interpreter import CommandInterpreter
 
 
 class TcpServer:

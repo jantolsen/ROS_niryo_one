@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # arm_commander.py
 # Copyright (C) 2018 Niryo
@@ -105,43 +105,43 @@ class ArmCommander:
     def set_joint_target(self, joint_array):
         try:
             self.move_group_arm.set_joint_value_target(joint_array)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_position_target(self, x, y, z):
         try:
             self.move_group_arm.set_position_target(x, y, z)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_rpy_target(self, roll, pitch, yaw):
         try:
             self.move_group_arm.set_rpy_target(roll, pitch, yaw)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_pose_target(self, x, y, z, roll, pitch, yaw):
         try:
             self.move_group_arm.set_pose_target(x, y, z, roll, pitch, yaw)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_pose_quat_target(self, pose_msg):
         try:
             self.move_group_arm.set_pose_quat_target(pose_msg)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_shift_pose_target(self, axis_number, value):
         try:
             self.move_group_arm.set_shift_pose_target(axis_number, value)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(CommandStatus.INVALID_PARAMETERS, str(e))
 
     def set_max_velocity_scaling_factor(self, percentage):
         try:
             self.move_group_arm.set_max_velocity_scaling_factor(percentage)
-        except Exception, e:
+        except Exception as e:
             raise RobotCommanderException(400, str(e))
 
     @staticmethod
